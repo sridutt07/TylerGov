@@ -1,0 +1,48 @@
+<div class="example-container">
+  <h2>Add New Employee</h2>
+  <div class="form-container">
+    <form class="form" [formGroup]="employeeForm">
+      <mat-form-field class="dropbox" appearance="fill">
+        <mat-label >Choose an manager</mat-label>
+        <mat-select formControlName="managerEmployeeId" class="select-option">
+          <mat-option
+            *ngFor="let manager of managerList"
+            [value]="manager.employeeId"
+            >{{manager.firstName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Employee Id</mat-label>
+        <input matInput formControlName="employeeId" type="number" />
+        <mat-error>Please enter a Id</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error>Please enter your first name</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error>Please enter your last name</mat-error>
+      </mat-form-field>
+      <mat-form-field class="dropbox" appearance="fill">
+        <mat-label>Choose Roles</mat-label>
+        <mat-select formControlName="roleIds" class="select-option" multiple>
+          <mat-option
+            *ngFor="let role of rolesList"
+            [value]="role.id.toString()"
+            >{{role.roleName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div>
+    <button class="save-button" mat-raised-button color="primary" (click)="addEmployee()" type="submit">
+        Save
+    </button>
+    <button mat-raised-button color="primary" (click)="cancel()" type="submit">
+        Cancel
+    </button>
+  </div>
+</div>
